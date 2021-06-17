@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../../context/GlobalState";
 
 function AddTransaction() {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
+  const { addTransaction, transactions } = useContext(GlobalContext);
   const onSubmit = (e) => {
-      e.preventDefault();
-    console.log("onSubmit is called.amount", amount, "text", text);
+    e.preventDefault();
+    let key = transactions.length + 1;
+    let transaction = { key, text, amount:+amount };
+    addTransaction(transaction)
+    setText('');
+    setAmount(0);
   };
 
   return (
@@ -13,7 +19,7 @@ function AddTransaction() {
       <h3>Add new transaction</h3>
       <form onSubmit={onSubmit}>
         <div className="form-control">
-          <label htmlFor="text">Text</label>
+          <label htmlFor="text">Describe Expense</label>
           <input
             type="text"
             value={text}
@@ -23,8 +29,8 @@ function AddTransaction() {
         </div>
         <div className="form-control">
           <label htmlFor="amount">
-            Amount <br />
-            (negative - expense, positive - income)
+            Amount (negative - expense, positive - income)
+            
           </label>
           <input
             type="number"
