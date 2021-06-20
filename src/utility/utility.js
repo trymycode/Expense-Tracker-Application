@@ -12,4 +12,7 @@ export const moneyFormatter = (num) => {
     "." +
     p[1]
   );}
+  else if(num === 0){
+    return 0
+  }
 };

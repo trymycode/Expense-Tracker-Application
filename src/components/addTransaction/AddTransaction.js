@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { GlobalContext } from "../../context/GlobalState";
+import { GlobalContext } from "../../context/GlobalContextProvider";
 
 function AddTransaction() {
   const [text, setText] = useState("");
@@ -8,9 +8,9 @@ function AddTransaction() {
   const onSubmit = (e) => {
     e.preventDefault();
     let key = transactions.length + 1;
-    let transaction = { key, text, amount:+amount };
-    addTransaction(transaction)
-    setText('');
+    let transaction = { key, text, amount: +amount };
+    addTransaction(transaction);
+    setText("");
     setAmount(0);
   };
 
@@ -30,7 +30,6 @@ function AddTransaction() {
         <div className="form-control">
           <label htmlFor="amount">
             Amount (negative - expense, positive - income)
-            
           </label>
           <input
             type="number"

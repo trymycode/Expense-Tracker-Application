@@ -21,23 +21,30 @@ body {
 
 .container {
   margin: 30px auto;
-  width: 400px;
+  display: flex;
+  justify-content: space-between;
 }
-
+.header {
+  font-size: 2rem;
+  color: #6c5fac;
+}
 h1 {
   letter-spacing: 1px;
   margin: 0;
+  font-size: 1rem;
 }
 
 h3 {
   border-bottom: 1px solid #bbb;
   padding-bottom: 10px;
   margin: 40px 0 10px;
+  font-size: 0.9rem;
 }
 
 h4 {
   margin: 0;
   text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .inc-exp-container {
@@ -89,7 +96,7 @@ input[type="number"] {
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color: #6c5fac;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -98,6 +105,11 @@ input[type="number"] {
   margin: 10px 0 30px;
   padding: 10px;
   width: 100%;
+  &:hover {
+    background-color: #fff !important;
+    color: #6c5fac !important;
+    font-weight: 600;
+  }
 }
 
 .btn:focus,
@@ -148,4 +160,16 @@ input[type="number"] {
 
 .list li:hover .delete-btn {
   opacity: 1;
+}
+
+.target-savings {
+  margin-left: 2rem;
+  padding: 2rem;
+  background-color: #dad4f8;
+  height: fit-content;
+  width: 25rem;
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  input {
+    margin-top: 1rem !important;
+  }
 }
