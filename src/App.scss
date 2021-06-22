@@ -10,7 +10,7 @@
 
 body {
   background-color: #f7f7f7;
-  color:#333;
+  color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,11 +77,11 @@ label {
   margin: 5px 0;
 }
 
-.money.plus {
+.plus {
   color: #2ecc71;
 }
 
-.money.minus {
+.minus {
   color: #c0392b;
 }
 
@@ -179,6 +179,5 @@ input[type="number"] {
 
   height: fit-content;
   width: 40%;
-  --box-shadow: var(--box-shadow) ;
- 
+  --box-shadow: var(--box-shadow);
 }
