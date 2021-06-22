@@ -7,25 +7,26 @@ import TransactionList from "./components/transactionList/TransactionList";
 import AddTransaction from "./components/addTransaction/AddTransaction";
 import { GlobalProvider } from "./context/GlobalContextProvider";
 import TargetSavings from "./components/targetSavings/TargetSavings";
-
+import { GlobalContext } from "./context/GlobalContextProvider";
 function App() {
-  
   return (
-    <GlobalProvider>
-      <Header />
-      <div className="container">
-        <section>
-          <Balance />
-          <IncomeExpenses />
-          <TransactionList />
-          <AddTransaction />
-        </section>
+    <div className="container-fluid mt-2">
+      <GlobalProvider>
+        <Header />
+        <div className="container">
+          <section className="section1">
+            <IncomeExpenses />
+            <TransactionList />
+            <AddTransaction />
+          </section>
 
-        <section className="target-savings">
-          <TargetSavings/>
-        </section>
-      </div>
-    </GlobalProvider>
+          <section className="section2">
+            <Balance />
+            <TargetSavings />
+          </section>
+        </div>
+      </GlobalProvider>
+    </div>
   );
 }
 

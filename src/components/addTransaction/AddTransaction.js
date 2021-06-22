@@ -18,7 +18,7 @@ function AddTransaction() {
     <>
       <h3>Add new transaction</h3>
       <form onSubmit={onSubmit}>
-        <div className="form-control">
+        <div className="form-control mb-2 p-2">
           <label htmlFor="text">Describe Expense</label>
           <input
             type="text"
@@ -27,7 +27,7 @@ function AddTransaction() {
             placeholder="Enter text..."
           />
         </div>
-        <div className="form-control">
+        <div className="form-control mb-2 p-2">
           <label htmlFor="amount">
             Amount (negative - expense, positive - income)
           </label>

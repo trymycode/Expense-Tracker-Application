@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "../reducer/AppReducer";
 import TargetSavingsReducer from "../reducer/TargetSavingsReducer";
-import {initialState} from "./InitialState";
+import { initialState } from "./InitialState";
 
 // global context
 export const GlobalContext = createContext(initialState);
@@ -11,21 +11,29 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   // include reducer which will update the state
   const [state, dispatchAppAction] = useReducer(AppReducer, initialState);
-  const [targetState, dispatchTargetAction] = useReducer(TargetSavingsReducer, initialState);
+  const [targetState, dispatchTargetAction] = useReducer(
+    TargetSavingsReducer,
+    initialState
+  );
 
   // Action creators
   function deleteTransaction(id) {
     dispatchAppAction({ type: "DELETE_TRANSACTION", payload: id });
   }
   function addTransaction(transaction) {
-    dispatchAppAction({ type: "ADD_TRANSACTION", payload:  transaction});
+    dispatchAppAction({ type: "ADD_TRANSACTION", payload: transaction });
+    
   }
-  function addTarget(target){
+  function addTarget(target) {
+    dispatchTargetAction({ type: "LOADING", payload: true });
     console.log("addTarget is called", target);
     let Target = +target;
-    dispatchTargetAction({type:"ADD_TARGET_AMOUNT", payload:Target})
-  }
 
+    dispatchTargetAction({ type: "ADD_TARGET_AMOUNT", payload: Target });
+
+    dispatchTargetAction({ type: "LOADING", payload: false });
+  }
+ 
   return (
     <GlobalContext.Provider
       value={{
@@ -33,9 +41,10 @@ export const GlobalProvider = ({ children }) => {
         transactions: state.transactions,
         deleteTransaction,
         addTransaction,
-        // savings 
-        savingsTarget: targetState.savingsTarget,
-        addTarget
+        // savings
+        savingsTargetAmount: targetState.savingsTarget.amount,
+        addTarget,
+        targetLoading: targetState.savingsTarget.loading,
       }}
     >
       {children}

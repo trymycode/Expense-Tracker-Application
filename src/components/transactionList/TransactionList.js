@@ -6,7 +6,7 @@ function TransactionList() {
 
   return (
     <>
-      <h3>History</h3>
+      <h2>History</h2>
       <ul className="list">
         {transactions &&
           transactions.map((item, i) => {
