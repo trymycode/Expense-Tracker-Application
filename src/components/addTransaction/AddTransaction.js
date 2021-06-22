@@ -7,8 +7,8 @@ function AddTransaction() {
   const { addTransaction, transactions } = useContext(GlobalContext);
   const onSubmit = (e) => {
     e.preventDefault();
-    let key = transactions.length + 1;
-    let transaction = { key, text, amount: +amount };
+    let id = transactions.length + 1;
+    let transaction = { id, text, amount: +amount };
     addTransaction(transaction);
     setText("");
     setAmount(0);
